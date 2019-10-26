@@ -27,10 +27,16 @@ app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
 // Connect MongoDB
-const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";
-mongoose.connect(MONGODB_URI, {
+const db = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";
+mongoose.connect(db, {
   useNewUrlParser: true,
   useUnifiedTopology: true
+}, function(error) {
+  if (error) {
+    console.log(error);
+  } else {
+    console.log("Mongoose connection is successful");
+  }
 });
 
 // Routes
