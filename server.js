@@ -6,11 +6,17 @@ const cheerio = require("cheerio");
 const exphbs = require("express-handlebars");
 const logger = require("morgan");
 
+// Set Express PORT
+const PORT = process.env.PORT || 3000;
+
 // Instantiate Express
 const app = express();
 
-// Set Express PORT
-const PORT = process.env.PORT || 3000;
+// Setup Express Router
+const router = express.Router();
+
+// Require routes and pass router object
+require("./config/routes")(router);
 
 // Use Morgan Logger for logging requests
 app.use(logger("dev"));
@@ -26,6 +32,9 @@ app.use(express.static("public"));
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
+// All requests through router
+app.use(router);
+
 // Connect MongoDB
 const db = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";
 mongoose.connect(db, {
@@ -37,11 +46,6 @@ mongoose.connect(db, {
   } else {
     console.log("Mongoose connection is successful");
   }
-});
-
-// Routes
-app.get("/", function(req, res) {
-  res.render("index")
 });
 
 // Start Server
