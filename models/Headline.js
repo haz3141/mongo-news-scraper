@@ -11,7 +11,7 @@ const HeadlineSchema = new Schema({
     required: true,
     unique: true
   },
-  summary: {
+  link: {
     type: String,
     required: true
   },
