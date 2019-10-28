@@ -14,7 +14,8 @@ const app = express();
 const router = express.Router();
 
 // Require routes and pass router object
-require("./config/routes")(router);
+require("./routes/apiRoutes")(router);
+require("./routes/htmlRoutes")(router);
 
 // Use Morgan Logger for logging requests
 app.use(logger("dev"));

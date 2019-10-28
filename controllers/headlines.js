@@ -3,17 +3,23 @@ const scrape = require("../scripts/scrape");
 const Headline = require("../models/Headline");
 
 module.exports = {
+
+  // Saves to Database
   fetch: function(cb) {
     scrape(function(data) {
-      const articles = data;
-      for (let i = 0; i < articles.length; i++) {
-        articles[i].date = Date.now();
-        articles[i].saved = false;
-      }
-
-      Headline.collection.insertMany(articles, { ordered: false }, function(err, docs) {
-        cb(err, docs);
-      });
+      const article = data;
+      console.log("Article: ", article);
+      Headline.create(article);
     });
+  },
+
+  // Remove Article from DB
+  delete: function(query, cb) {
+    Headline.remove(query, cb);
+  },
+
+  find: function(query, cb) {
+    console.log("find hit");
+    Headline.find(query, cb);
   }
 }

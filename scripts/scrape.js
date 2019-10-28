@@ -8,7 +8,7 @@ const scrape = function(cb) {
   .then(function(response) {
     // Load the html body from axios into cheerio  
     const $ = cheerio.load(response.data);
-    console.log($);
+    // console.log($);
 
     // Save articles to array
     const articles = [];
@@ -22,16 +22,21 @@ const scrape = function(cb) {
       if (headline && link) {
         const result = {
           headline: headline,
-          link: link
+          link: link,
+          date: Date.now(),
+          saved: false
         };
 
+        // Fire callback and pass array
+        cb(result);
+
         // Push result to articles array
-        articles.push(result);
+        // articles.push(result);
       }
     });
-    
-    // Fire callback and pass array
-    cb(articles);
+  }).catch(function(err) {
+    // If an error occurred, send it to the client
+    res.json(err);
   });
 };
 
