@@ -13,7 +13,7 @@ The goal here is to create a fullstack application that allows a user to scrape 
 
 Simply follow the steps below to get a local build running or head over to the live deployment at:
 
-https://sleepy-scrubland-81057.herokuapp.com/
+https://stormy-wave-49600.herokuapp.com/
 
 ### Prerequisites
 
