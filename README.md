@@ -7,7 +7,7 @@ The goal here is to create a fullstack application that allows a user to scrape 
 
 ## Preview
 
-![Preview](https://github.com/haz3141/burger-eater-app/blob/master/public/assets/images/screenshot.PNG?raw=true)
+![Preview](https://github.com/haz3141/mongo-news-scraper/blob/master/public/assets/images/Capture.PNG)
 
 ## Getting Started
 
