@@ -35,53 +35,35 @@
     <p>New York Times Edition</p>
   </div>
 </div>
-
 <div class="container-fluid article-container">
-  {{!-- <div data-_id="5db4a50c6f81d100157c0a16" class="card">
+  {{#each articles}}
+  <div data-_id="{{this._id}}" class="card">
     <div class="card-header">
       <h3>
-        <a class="article-link" target="_blank" rel="noopener noreferrer" href="https://www.nytimes.com/2019/10/26/opinion/sunday/doctors-addiction-trust.html">Choosing to Be Vulnerable With My Patients</a>
+        <a class="article-link" target="_blank" rel="noopener noreferrer" href="{{this.url}}">{{this.headline}}</a>
         <a class="btn btn-success save">Save Article</a>
       </h3>
     </div>
-    <div class="card-body">Doctors don’t like to let their guard down. But sometimes good things happen when they do.</div>
+    <div class="card-body">{{this.summary}}</div>
   </div>
-    <div data-_id="5db4a50c6f81d100157c0a11" class="card">
-    <div class="card-header">
-      <h3>
-        <a class="article-link" target="_blank" rel="noopener noreferrer" href="https://www.nytimes.com/2019/10/25/us/california-fires-evacuations.html">In Fire-Scarred California, ‘If You’re Told to Go, You Go’A small but growing number of wealthy people are hiring private firefighters.</a>
-        <a class="btn btn-success save">Save Article</a>
-      </h3>
-    </div>
-    <div class="card-body">As wildfires raged across the state this week, tens of thousands of residents were ordered to evacuate their homes out of an abundance of caution.</div>
+  {{/each}} {{#unless articles.length}}
+  <div class='alert alert-warning text-center'>
+    <h4>Uh Oh. Looks like we don't have any new articles.</h4>
   </div>
-    <div data-_id="5db4a50c6f81d100157c0a10" class="card">
-    <div class="card-header">
-      <h3>
-        <a class="article-link" target="_blank" rel="noopener noreferrer" href="https://www.nytimes.com/2019/10/26/us/california-fires-sonoma-kincade.html">PG&amp;E to Cut Power for Nearly 1 Million as Californians Flee Fires</a>
-        <a class="btn btn-success save">Save Article</a>
-      </h3>
+  <div class="card">
+    <div class="card-header text-center">
+      <h3>What Would You Like To Do?</h3>
     </div>
-    <div class="card-body">The shut-off would be the largest for a wildfire prevention measure in state history. A mandatory evacuation order was issued for about 50,000 Sonoma County residents.</div>
+    <div class="card-body text-center">
+      <h4>
+        <a class="scrape-new">Try Scraping New Articles</a>
+      </h4>
+      <h4>
+        <a href="/saved">Go to Saved Articles</a>
+      </h4>
+    </div>
   </div>
-    <div data-_id="5db4a50c6f81d100157c0a13" class="card">
-    <div class="card-header">
-      <h3>
-        <a class="article-link" target="_blank" rel="noopener noreferrer" href="https://www.nytimes.com/2019/10/26/world/europe/vatican-synod-amazon-pope.html">Catholic Bishops Back Milestone Ordination of Married Men in Amazon Region</a>
-        <a class="btn btn-success save">Save Article</a>
-      </h3>
-    </div>
-    <div class="card-body">It was the first time a summit of bishops convened by a pope has endorsed such a historic change to the tradition of a celibate priesthood.</div>
-  </div>
-    <div data-_id="5db4a50c6f81d100157c0a0f" class="card">
-    <div class="card-header">
-      <h3>
-        <a class="article-link" target="_blank" rel="noopener noreferrer" href="https://www.nytimes.com/2019/10/26/us/politics/bolton-trump-impeachment.html">Waiting for Bolton: A Capital Speculates on What He Will SayAn official who defended the ambassador to Ukraine is testifying in the impeachment inquiry.Here’s a short-ish recap of impeachment developments this week.</a>
-        <a class="btn btn-success save">Save Article</a>
-      </h3>
-    </div>
-    <div class="card-body">There may be no witness investigators want to question more than John Bolton, the president’s former national security adviser.</div>
-  </div> --}}
+  {{/unless}}
 </div>
 
 <footer class="footer">
@@ -93,4 +75,4 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.4.0/bootbox.min.js"></script>
-<script src="../../assets/js/index.js"></script>
+<script src="/assets/javascript/index.js"></script>

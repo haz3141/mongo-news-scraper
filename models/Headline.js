@@ -11,6 +11,11 @@ const HeadlineSchema = new Schema({
     required: true,
     unique: true
   },
+  summary: {
+    type: String,
+    required: true,
+    default: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+  },
   link: {
     type: String,
     required: true

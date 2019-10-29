@@ -1,4 +1,4 @@
-  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
   <a class="navbar-brand" href="/">Mongo Scraper</a>
   <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false"
     aria-label="Toggle navigation">
@@ -33,38 +33,34 @@
     <p>Your Saved Articles</p>
   </div>
 </div>
-
 <div class="container-fluid article-container">
-    {{!-- <div data-_id=5db4a50c6f81d100157c0a18 class="card">
+  {{#each articles}}
+    <div data-_id={{this._id}} class="card">
       <div class="card-header">
         <h3>
-          <a class="article-link" target="_blank" rel="noopener noreferrer" href="https://www.nytimes.com/2019/10/24/books/review-unspeakable-acts-nancy-princenthal.html">A Pivotal Moment in the Art World’s Treatment of Sexual Violence</a>
+          <a class="article-link" target="_blank" rel="noopener noreferrer" href="{{this.url}}">{{this.headline}}</a>
           <a class="btn btn-danger delete">Delete From Saved</a>
           <a class="btn btn-info notes">Article Notes</a>
         </h3>
       </div>
-      <div class="card-body">Our critic reviews “Unspeakable Acts,” a new book about how artists have made sense (or not) of violence against women.</div>
+      <div class="card-body">{{this.summary}}</div>
     </div>
-    <div data-_id=5db4a50c6f81d100157c0a14 class="card">
-      <div class="card-header">
-        <h3>
-          <a class="article-link" target="_blank" rel="noopener noreferrer" href="https://www.nytimes.com/2019/10/26/us/politics/joe-biden-campaign-fundraising.html">‘Very Alarming’: Biden Campaign Races to Fix Money WoesDemocratic Candidates Rebuke Trump at Criminal Justice ForumMitt Romney has been gifted by Mr. Trump with a kind of late-career relevance, our correspondent writes in an analysis.</a>
-          <a class="btn btn-danger delete">Delete From Saved</a>
-          <a class="btn btn-info notes">Article Notes</a>
-        </h3>
-      </div>
-      <div class="card-body">Joe Biden’s presidential campaign is spending more money than it is taking in, unlike his top 2020 rivals.Democrats hit back at President Trump’s record and history of racial demagogy a day after he hailed his own and belittled Barack Obama’s.</div>
+  {{/each}}
+  {{#unless articles.length}}
+    <div class="alert alert-warning text-center">
+      <h4>Uh Oh. Looks like we don't have any saved articles.</h4>
     </div>
-    <div data-_id=5db4a50c6f81d100157c0a15 class="card">
-      <div class="card-header">
-        <h3>
-          <a class="article-link" target="_blank" rel="noopener noreferrer" href="https://www.nytimes.com/2019/10/25/briefing/11-of-our-best-weekend-reads.html">11 of Our Best Weekend ReadsDid you stay up-to-date this week? Take our news quiz.</a>
-          <a class="btn btn-danger delete">Delete From Saved</a>
-          <a class="btn btn-info notes">Article Notes</a>
-        </h3>
+    <div class="card">
+      <div class="card-header text-center">
+        <h3>Would You Like to Browse Available Articles?</h3>
       </div>
-      <div class="card-body">De Niro and Pacino. Alyssa Milano. Flea. Taste-testing plant-based burgers. The sunless world of immigrants in Queens. And more.</div>
-    </div> --}}
+      <div class="card-body text-center">
+        <h4>
+          <a href="/">Browse Articles</a>
+        </h4>
+      </div>
+    </div>
+  {{/unless}}
 </div>
 
 <footer class="footer">
@@ -76,4 +72,4 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.4.0/bootbox.min.js"></script>
-<script src="../../assets/js/saved.js"></script>
+<script src="/assets/javascript/saved.js"></script>

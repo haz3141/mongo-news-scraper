@@ -3,8 +3,7 @@ const headlinesController = require("../controllers/headlines");
 module.exports = function(router) {
   // Scrape Route
   router.get("/api/scrape/", function(req, res) {
-    headlinesController.fetch();
-    res.send("SCRAPING...");
+    headlinesController.fetch(res.send("SCRAPING..."));
   });
 
   // Find headlines
@@ -31,6 +30,13 @@ module.exports = function(router) {
       console.log('deleted!!!');
       res.send(result); 
     });
+  });
+
+  // Clear DB
+  router.get("/api/clear", function(req, res) {
+    headlinesController.clearDB(req, res);
+      console.log('cleared!!!');
+      res.send("cleared");
   });
 
   
